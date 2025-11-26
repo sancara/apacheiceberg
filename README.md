@@ -52,18 +52,33 @@ docker-compose up -d
 
 This will start all services in the background.
 
-### 3. Access the Services
+### 3. Prepare NBA Dataset
+
+The repository includes NBA game data in a compressed archive. Extract it before running the notebooks:
+
+```bash
+# Extract the NBA data from the archive
+unzip data/archive.zip -d data/nba
+
+# Verify the extraction
+ls data/nba
+# Expected files: games.csv, games_details.csv, players.csv, ranking.csv, teams.csv
+```
+
+**Note**: The extracted files are already in `.gitignore` to avoid committing large CSV files.
+
+### 4. Access the Services
 
 - **Jupyter Notebook**: http://localhost:8888
 - **Spark UI**: http://localhost:8080
 - **MinIO Console**: http://localhost:9001
 - **Iceberg REST Catalog**: http://localhost:8181
 
-### 4. Working with Iceberg
+### 5. Working with Iceberg
 
 Access the Jupyter notebook interface at http://localhost:8888 to start working with Apache Iceberg tables. The Spark session is pre-configured to use the Iceberg REST catalog and MinIO for storage.
 
-### 5. Stop the Services
+### 6. Stop the Services
 
 ```bash
 docker-compose down
